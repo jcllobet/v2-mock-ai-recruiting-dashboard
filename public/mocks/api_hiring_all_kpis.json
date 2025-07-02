@@ -1,0 +1,24 @@
+{
+  "active_positions": 35,
+  "total_applications": 1247,
+  "interviews_scheduled": 156,
+  "offers_extended": 42,
+  "hires_completed": 28,
+  "avg_time_to_hire": 24,
+  "conversation_hours": [
+    { "date": "2024-12-14", "hours": 45.5 },
+    { "date": "2024-12-15", "hours": 52.3 },
+    { "date": "2024-12-16", "hours": 48.7 },
+    { "date": "2024-12-17", "hours": 61.2 },
+    { "date": "2024-12-18", "hours": 55.8 },
+    { "date": "2024-12-19", "hours": 42.1 },
+    { "date": "2024-12-20", "hours": 39.6 }
+  ],
+  "funnel_data": {
+    "applied": 1247,
+    "screened": 892,
+    "interviewed": 312,
+    "offered": 78,
+    "hired": 28
+  }
+}
