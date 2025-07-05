@@ -27,8 +27,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // Check for existing session
     const checkAuth = async () => {
       try {
-        const token = localStorage.getItem('auth-token');
+        // Check for token in cookies first (for SSR compatibility)
+        const cookies = document.cookie.split(';');
+        const authCookie = cookies.find(c => c.trim().startsWith('auth-token='));
+        const cookieToken = authCookie?.split('=')[1];
+        
+        // Then check localStorage as fallback
+        const localToken = localStorage.getItem('auth-token');
+        const token = cookieToken || localToken;
+        
         if (token) {
+          // Ensure both storage methods are synced
+          if (!cookieToken && localToken) {
+            document.cookie = `auth-token=${localToken}; path=/; max-age=${60 * 60 * 24 * 7}`;
+          }
+          if (cookieToken && !localToken) {
+            localStorage.setItem('auth-token', cookieToken);
+          }
+          
           const currentUser = await userService.getCurrentUser();
           setUser(currentUser);
         }

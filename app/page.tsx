@@ -1,24 +1,12 @@
-'use client';
-
-import { redirect } from 'next/navigation';
-import { useEffect } from 'react';
-import { useAuth } from '@/app/lib/contexts/auth-context';
+import { LoadingSpinner } from '@/app/components/ui/loading-spinner';
 
 /**
- * Home page that redirects to dashboard
+ * Home page that shows loading while middleware handles redirect
  */
 export default function HomePage() {
-  const { user, loading } = useAuth();
-
-  useEffect(() => {
-    if (!loading) {
-      if (user) {
-        redirect('/dashboard');
-      } else {
-        redirect('/login');
-      }
-    }
-  }, [user, loading]);
-
-  return null;
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <LoadingSpinner />
+    </div>
+  );
 }

@@ -661,6 +661,14 @@ export const messageService = {
  */
 export const touchpointService = {
   /**
+   * Get all touchpoints
+   */
+  async getAll(): Promise<Touchpoint[]> {
+    await delay();
+    return mockTouchpoints;
+  },
+
+  /**
    * Get touchpoints by candidate ID
    */
   async getByCandidateId(candidateId: string): Promise<Touchpoint[]> {
@@ -681,4 +689,25 @@ export const touchpointService = {
     mockTouchpoints.push(newTouchpoint);
     return newTouchpoint;
   },
+};
+
+/**
+ * Unified mock service object
+ */
+export const mockService = {
+  clients: clientService,
+  positions: positionService,
+  candidates: candidateService,
+  conversations: conversationService,
+  dashboard: dashboardService,
+  users: userService,
+  activities: activityService,
+  workflows: workflowService,
+  agents: agentService,
+  calendar: calendarService,
+  analytics: analyticsService,
+  reports: reportService,
+  settings: settingsService,
+  messages: messageService,
+  touchpoints: touchpointService,
 };
